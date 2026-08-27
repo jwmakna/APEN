@@ -55,23 +55,17 @@ Windows PowerShell에서는 가상환경을 다음과 같이 활성화합니다.
 .\.venv\Scripts\Activate.ps1
 ```
 
-테스트:
-
-```bash
-python -m unittest discover operational_corrected -p "test_*.py" -v
-```
-
 모형 재실행:
 
 ```bash
 python operational_corrected/run_operational_corrected.py --output-dir reproduced_results
 ```
 
-기본 입력은 저장소 안의 `data/`입니다. 같은 이름의 결과 파일이 출력 폴더에 있으면 덮어쓰지 않고 실행을 중단합니다. 저장된 실행에서는 62개 테스트와 네 모형 학습, prediction CSV 기반 독립 지표 재계산이 모두 완료되었습니다.
+기본 입력은 저장소 안의 `data/`입니다. 실행하면 네 모형을 학습하고 예측값, 전처리 데이터, 평가 지표를 지정한 출력 폴더에 저장합니다.
 
 ## 폴더
 
-- `operational_corrected/`: 전처리, 평가함수, 모형, 실행 파일과 테스트
+- `operational_corrected/`: 전처리, 평가함수, 모형과 실행 파일
 - `data/`: 실행 입력과 참고용 추출 파일
 - `results/`: 전처리 결과, 예측값과 지표
 - `docs/`: 방법, 결과와 남아 있는 질문

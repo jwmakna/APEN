@@ -91,25 +91,48 @@ $$
 관측치별 수익은 다음과 같습니다.
 
 $$
-\Pi(q)=C\Delta t\left[DPq+RP\max(S-q,0)-PC\max(q-S,0)\right].
+\Pi(x)=C\Delta t\left[
+DPx
++RP\max(S-x,0)
+-PC\max(x-S,0)
+\right].
 $$
 
-`C=30 MW`, `\Delta t=1 hour`, `PC=0.5\times DP`를 사용합니다. Raw prediction은 저장하고 지표에는 exact projection을 적용합니다.
+여기서 $\max(S-x,0)=y'$이고 $\max(x-S,0)=y''$입니다. `C=30 MW`, `\Delta t=1 hour`, `PC=0.5\times DP`를 사용합니다.
+
+모형이 출력한 raw prediction은 그대로 저장하고, 공식 평가지표를 계산할 때는 다음과 같이 `[0,1]` 범위로 projection합니다.
 
 $$
-q^{\mathrm{eval}}=\min(1,\max(0,q^{\mathrm{raw}})).
+x^{\mathrm{eval}}
+=\min\left(1,\max\left(0,x^{\mathrm{raw}}\right)\right).
 $$
 
-nRMSE는 test 1,200개를 한 번에 모아 계산합니다.
+nRMSE는 test 1,200개 관측을 한 번에 모아 계산합니다.
 
 $$
-\operatorname{nRMSE}=100\frac{\sqrt{N^{-1}\sum_i(q_i^{\mathrm{eval}}-S_i)^2}}{\bar S}.
+\operatorname{nRMSE}
+=
+100
+\frac{
+\sqrt{
+N^{-1}\sum_i
+\left(x_i^{\mathrm{eval}}-S_i\right)^2
+}
+}{
+\bar S
+}.
 $$
 
-Oracle은 각 관측에서 `q\in\{0,S,1\}`의 수익 중 가장 큰 값을 선택합니다. Gap은 다음과 같습니다.
+Oracle은 각 관측에서 $x\in\{0,S,1\}$일 때의 수익을 계산하고, 그중 가장 큰 값을 선택합니다. Gap은 다음과 같습니다.
 
 $$
-100\frac{\Pi^{\mathrm{oracle}}-\Pi(q^{\mathrm{eval}})}{\Pi^{\mathrm{oracle}}}.
+100
+\frac{
+\Pi^{\mathrm{oracle}}
+-\Pi\left(x^{\mathrm{eval}}\right)
+}{
+\Pi^{\mathrm{oracle}}
+}.
 $$
 
 논문 표의 gap percentage 분모는 확인되지 않아 현재 값과 직접 비교하지 않았습니다.

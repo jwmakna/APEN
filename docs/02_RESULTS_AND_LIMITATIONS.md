@@ -61,8 +61,8 @@ GEFCom 원자료의 timestamp에는 시간대 정보가 없으므로, source-nai
 - 날짜별 Sydney 현지시간 09:00–20:00의 12행
 - 관측된 POWER·DA·RT만 사용
 - 네 solver `OPTIMAL`
-- 전체 테스트 62개 통과
-- 저장 prediction 기반 52개 지표 재계산 일치
+- 코드 정리 후 300일·100일 전체 실행 완료
+- 기존 저장 prediction과 재실행 prediction의 수치 일치(최대 절대차 0.0)
 
 위 검산은 현재 코드와 저장 결과의 내부 일관성을 확인한 것입니다.
 
