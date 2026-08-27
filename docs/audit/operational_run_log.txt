@@ -1,0 +1,72 @@
+[1/6] preprocessing Sydney-local 09:00-20:00 observed-RT dataset
+[2/6] fitting Conventional AR and MLR
+[3/6] fitting Proposed AR (12 target-hour MILPs)
+[4/6] fitting Proposed pooled MLR MILP
+[5/6] staging predictions and independently recomputing metrics
+[6/6] committing verified official artifacts
+{
+  "status": "OPTIMAL",
+  "models": {
+    "Conventional AR": {
+      "official_nrmse_percent": 53.81441135922965,
+      "raw_nrmse_percent_diagnostic": 53.81441135922965,
+      "absolute_gap": 527078.5621170009,
+      "realized_profit": 499359.73966927384,
+      "oracle_profit": 1026438.3017862748,
+      "gap_percent": 51.35024299071308,
+      "raw_prediction_min": 0.0,
+      "raw_prediction_max": 0.8353619838518782,
+      "raw_boundary_violation_count": 0,
+      "projection_changed_count": 0,
+      "projection_max_absolute_change": 0.0,
+      "evaluated_prediction_min": 0.0,
+      "evaluated_prediction_max": 0.8353619838518782
+    },
+    "Conventional MLR": {
+      "official_nrmse_percent": 43.45528214972662,
+      "raw_nrmse_percent_diagnostic": 43.457728669627755,
+      "absolute_gap": 530220.3240297922,
+      "realized_profit": 496217.9777564825,
+      "oracle_profit": 1026438.3017862748,
+      "gap_percent": 51.65632684468889,
+      "raw_prediction_min": -0.012022381749155042,
+      "raw_prediction_max": 0.8169224881709559,
+      "raw_boundary_violation_count": 4,
+      "projection_changed_count": 4,
+      "projection_max_absolute_change": 0.012022381749155042,
+      "evaluated_prediction_min": 0.0,
+      "evaluated_prediction_max": 0.8169224881709559
+    },
+    "Proposed AR": {
+      "official_nrmse_percent": 54.02736317291757,
+      "raw_nrmse_percent_diagnostic": 54.02736317291757,
+      "absolute_gap": 525563.4554502983,
+      "realized_profit": 500874.8463359764,
+      "oracle_profit": 1026438.3017862748,
+      "gap_percent": 51.202634833060934,
+      "raw_prediction_min": 0.0,
+      "raw_prediction_max": 0.8353363427084874,
+      "raw_boundary_violation_count": 0,
+      "projection_changed_count": 0,
+      "projection_max_absolute_change": 0.0,
+      "evaluated_prediction_min": 0.0,
+      "evaluated_prediction_max": 0.8353363427084874
+    },
+    "Proposed MLR": {
+      "official_nrmse_percent": 43.85581195771488,
+      "raw_nrmse_percent_diagnostic": 43.85841962792801,
+      "absolute_gap": 529252.6259355388,
+      "realized_profit": 497185.67585073586,
+      "oracle_profit": 1026438.3017862748,
+      "gap_percent": 51.56204956639858,
+      "raw_prediction_min": -0.012772666165199509,
+      "raw_prediction_max": 0.82178316739553,
+      "raw_boundary_violation_count": 4,
+      "projection_changed_count": 4,
+      "projection_max_absolute_change": 0.012772666165199509,
+      "evaluated_prediction_min": 0.0,
+      "evaluated_prediction_max": 0.82178316739553
+    }
+  }
+}
+ELAPSED_SECONDS=7 STATUS=0

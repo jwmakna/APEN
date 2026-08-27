@@ -1,0 +1,74 @@
+{
+  "official_version": "operational_corrected",
+  "review_status": "PENDING_USER_REVIEW",
+  "execution_status": "OPTIMAL",
+  "created_utc": "2026-08-27T20:40:08.705461+00:00",
+  "data_extension": {
+    "status": "COMPLETED",
+    "miso_daily_reports_checked": 802,
+    "da_hourly_rows": 9624,
+    "rt_hourly_rows": 9624,
+    "overlap_with_previous_price_files_equal": true,
+    "synthetic_or_forward_filled_rt_count": 0
+  },
+  "preprocessing_validation": {
+    "source_timestamp_interpretation": "NAIVE_AS_UTC_REPRODUCTION_ASSUMPTION",
+    "target_timezone": "Australia/Sydney",
+    "day_grouping": "SYDNEY_LOCAL_DATE",
+    "selected_local_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "price_join_key": "TIMEZONE_AWARE_UTC_TIMESTAMP",
+    "deaccumulation_order": "FULL_SOURCE_SEQUENCE_BEFORE_TIMEZONE_CONVERSION_AND_DAYLIGHT_FILTER",
+    "history_rows": 12,
+    "train_rows": 3600,
+    "test_rows": 1200,
+    "synthetic_rt_count": 0
+  },
+  "dataset_policy": {
+    "history_date": "2013-03-26",
+    "train_start": "2013-03-27",
+    "train_end": "2014-01-20",
+    "train_days": 300,
+    "train_observations": 3600,
+    "test_start": "2014-01-21",
+    "test_end": "2014-04-30",
+    "test_days": 100,
+    "test_observations": 1200,
+    "requires_observed_rt": true
+  },
+  "exact_binary_reformulation": {
+    "status": "APPLIED",
+    "method": "KEEP_BINARY_ONLY_WHEN_COMMON_SURPLUS_SHORTAGE_DELTA_COST_IS_NEGATIVE",
+    "is_relaxation": false,
+    "proposed_ar_unreduced_binary_count": 3600,
+    "proposed_ar_reduced_binary_count": 1,
+    "proposed_mlr_unreduced_binary_count": 3600,
+    "proposed_mlr_reduced_binary_count": 1
+  },
+  "tests": {
+    "status": "PASSED",
+    "total_tests": 62,
+    "failures": 0,
+    "errors": 0
+  },
+  "metric_verification": {
+    "status": "VERIFIED",
+    "method": "SAVED_PREDICTION_CSV_DIRECT_EQUATION_RECALCULATION",
+    "checked_fields": 52,
+    "prediction_rows": 4800
+  },
+  "model_status": {
+    "Conventional AR": "OPTIMAL",
+    "Conventional MLR": "OPTIMAL",
+    "Proposed AR": "OPTIMAL",
+    "Proposed MLR": "OPTIMAL"
+  },
+  "official_artifacts": {
+    "results": "results/operational_results.json",
+    "predictions": "results/operational_predictions.csv",
+    "metric_verification": "results/operational_metric_verification.json",
+    "preprocessed_train": "results/operational_preprocessed_train.csv",
+    "preprocessed_test": "results/operational_preprocessed_test.csv",
+    "test_log": "docs/audit/operational_test_log.txt",
+    "run_log": "docs/audit/operational_run_log.txt"
+  }
+}
