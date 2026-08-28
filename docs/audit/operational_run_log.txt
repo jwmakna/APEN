@@ -1,13 +1,13 @@
 [1/6] preprocessing Sydney-local 09:00-20:00 observed-RT dataset
-[2/6] fitting Conventional AR and MLR
-[3/6] fitting Proposed AR (12 target-hour MILPs)
-[4/6] fitting Proposed pooled MLR MILP
+[2/6] fitting Baseline AR and MLR
+[3/6] fitting Paper-proposed AR (12 target-hour MILPs)
+[4/6] fitting Paper-proposed pooled MLR MILP
 [5/6] staging predictions and independently recomputing metrics
 [6/6] committing verified official artifacts
 {
   "status": "OPTIMAL",
   "models": {
-    "Conventional AR": {
+    "Baseline AR": {
       "official_nrmse_percent": 53.81441135922965,
       "raw_nrmse_percent_diagnostic": 53.81441135922965,
       "absolute_gap": 527078.5621170009,
@@ -22,7 +22,7 @@
       "evaluated_prediction_min": 0.0,
       "evaluated_prediction_max": 0.8353619838518782
     },
-    "Conventional MLR": {
+    "Baseline MLR": {
       "official_nrmse_percent": 43.45528214972662,
       "raw_nrmse_percent_diagnostic": 43.457728669627755,
       "absolute_gap": 530220.3240297922,
@@ -37,7 +37,7 @@
       "evaluated_prediction_min": 0.0,
       "evaluated_prediction_max": 0.8169224881709559
     },
-    "Proposed AR": {
+    "Paper-proposed AR": {
       "official_nrmse_percent": 54.02736317291757,
       "raw_nrmse_percent_diagnostic": 54.02736317291757,
       "absolute_gap": 525563.4554502983,
@@ -52,7 +52,7 @@
       "evaluated_prediction_min": 0.0,
       "evaluated_prediction_max": 0.8353363427084874
     },
-    "Proposed MLR": {
+    "Paper-proposed MLR": {
       "official_nrmse_percent": 43.85581195771488,
       "raw_nrmse_percent_diagnostic": 43.85841962792801,
       "absolute_gap": 529252.6259355388,

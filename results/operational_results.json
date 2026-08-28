@@ -96,7 +96,7 @@
   },
   "metric_verification_status": "VERIFIED",
   "models": {
-    "Conventional AR": {
+    "Baseline AR": {
       "coefficients": [
         [
           0.06411197446755412,
@@ -387,7 +387,7 @@
       "status": "OPTIMAL",
       "training_objective": "mean_absolute_error"
     },
-    "Conventional MLR": {
+    "Baseline MLR": {
       "coefficients": [
         0.39588694712950634,
         0.1974773675304497,
@@ -434,7 +434,7 @@
       "status": "OPTIMAL",
       "training_objective": "mean_absolute_error"
     },
-    "Proposed AR": {
+    "Paper-proposed AR": {
       "coefficients": [
         [
           0.0646963178415132,
@@ -725,7 +725,7 @@
       "status": "OPTIMAL",
       "training_objective": "corrected_dimensionless_training_objective_project_definition"
     },
-    "Proposed MLR": {
+    "Paper-proposed MLR": {
       "coefficients": [
         0.4022314533239986,
         0.19780045743330366,

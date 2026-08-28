@@ -39,10 +39,10 @@
     "status": "APPLIED",
     "method": "KEEP_BINARY_ONLY_WHEN_COMMON_SURPLUS_SHORTAGE_DELTA_COST_IS_NEGATIVE",
     "is_relaxation": false,
-    "proposed_ar_unreduced_binary_count": 3600,
-    "proposed_ar_reduced_binary_count": 1,
-    "proposed_mlr_unreduced_binary_count": 3600,
-    "proposed_mlr_reduced_binary_count": 1
+    "paper_proposed_ar_unreduced_binary_count": 3600,
+    "paper_proposed_ar_reduced_binary_count": 1,
+    "paper_proposed_mlr_unreduced_binary_count": 3600,
+    "paper_proposed_mlr_reduced_binary_count": 1
   },
   "tests": {
     "status": "PASSED",
@@ -57,10 +57,10 @@
     "prediction_rows": 4800
   },
   "model_status": {
-    "Conventional AR": "OPTIMAL",
-    "Conventional MLR": "OPTIMAL",
-    "Proposed AR": "OPTIMAL",
-    "Proposed MLR": "OPTIMAL"
+    "Baseline AR": "OPTIMAL",
+    "Baseline MLR": "OPTIMAL",
+    "Paper-proposed AR": "OPTIMAL",
+    "Paper-proposed MLR": "OPTIMAL"
   },
   "official_artifacts": {
     "results": "results/operational_results.json",

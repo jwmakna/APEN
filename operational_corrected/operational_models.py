@@ -101,7 +101,7 @@ def combined_training_objective(
     return float(w1 * economic_loss + w2 * mae)
 
 
-def fit_proposed_milp(
+def fit_paper_proposed_milp(
     X,
     actual,
     day_ahead_price,
@@ -109,7 +109,7 @@ def fit_proposed_milp(
     *,
     w1=W1,
     w2=W2,
-    model_name="proposed_linear",
+    model_name="paper_proposed_linear",
 ):
     X = np.asarray(X, dtype=float)
     actual = np.asarray(actual, dtype=float)
@@ -219,10 +219,10 @@ def build_ar_lag_design(history_daily, train_daily):
     return X, train.copy()
 
 
-def fit_conventional_ar(history_daily, train_daily):
+def fit_baseline_ar(history_daily, train_daily):
     X, targets = build_ar_lag_design(history_daily, train_daily)
     fits = [
-        _solve_bounded_lad(X, targets[:, hour], f"Conventional AR hour {hour}")
+        _solve_bounded_lad(X, targets[:, hour], f"Baseline AR hour {hour}")
         for hour in range(12)
     ]
     return ARFit(
@@ -233,7 +233,7 @@ def fit_conventional_ar(history_daily, train_daily):
     )
 
 
-def fit_proposed_ar(
+def fit_paper_proposed_ar(
     history_daily,
     train_daily,
     train_da_daily,
@@ -244,14 +244,14 @@ def fit_proposed_ar(
 ):
     X, targets = build_ar_lag_design(history_daily, train_daily)
     fits = [
-        fit_proposed_milp(
+        fit_paper_proposed_milp(
             X,
             targets[:, hour],
             train_da_daily[:, hour],
             train_rt_daily[:, hour],
             w1=w1,
             w2=w2,
-            model_name=f"Proposed AR hour {hour}",
+            model_name=f"Paper-proposed AR hour {hour}",
         )
         for hour in range(12)
     ]
@@ -280,19 +280,21 @@ def predict_ar_rolling(coefficients_by_hour, previous_day_actual, test_actual):
     return predictions
 
 
-def fit_conventional_mlr(X, actual):
-    return _solve_bounded_lad(X, actual, "Conventional MLR")
+def fit_baseline_mlr(X, actual):
+    return _solve_bounded_lad(X, actual, "Baseline MLR")
 
 
-def fit_proposed_mlr(X, actual, day_ahead_price, real_time_price, *, w1=W1, w2=W2):
-    return fit_proposed_milp(
+def fit_paper_proposed_mlr(
+    X, actual, day_ahead_price, real_time_price, *, w1=W1, w2=W2
+):
+    return fit_paper_proposed_milp(
         X,
         actual,
         day_ahead_price,
         real_time_price,
         w1=w1,
         w2=w2,
-        model_name="Proposed MLR",
+        model_name="Paper-proposed MLR",
     )
 
 

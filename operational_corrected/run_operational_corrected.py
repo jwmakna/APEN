@@ -11,10 +11,10 @@ from operational_evaluation import evaluate_raw_predictions
 from operational_models import (
     ARFit,
     LinearFit,
-    fit_conventional_ar,
-    fit_conventional_mlr,
-    fit_proposed_ar,
-    fit_proposed_mlr,
+    fit_baseline_ar,
+    fit_baseline_mlr,
+    fit_paper_proposed_ar,
+    fit_paper_proposed_mlr,
     predict_ar_rolling,
     predict_linear_raw,
 )
@@ -27,10 +27,10 @@ from operational_preprocessing import (
 
 
 MODEL_ORDER = (
-    "Conventional AR",
-    "Conventional MLR",
-    "Proposed AR",
-    "Proposed MLR",
+    "Baseline AR",
+    "Baseline MLR",
+    "Paper-proposed AR",
+    "Paper-proposed MLR",
 )
 
 
@@ -86,17 +86,17 @@ def run_experiment(predictors_path, da_path, rt_path, output_dir):
     _, train_da = to_daily_matrix(dataset.train, "da_price")
     _, train_rt = to_daily_matrix(dataset.train, "rt_price")
 
-    print("[2/5] fitting conventional models")
-    conventional_ar = fit_conventional_ar(history_actual, train_actual)
-    conventional_mlr = fit_conventional_mlr(
+    print("[2/5] fitting baseline models")
+    baseline_ar = fit_baseline_ar(history_actual, train_actual)
+    baseline_mlr = fit_baseline_mlr(
         X_train, dataset.train["solar_power"].to_numpy()
     )
 
-    print("[3/5] fitting proposed models")
-    proposed_ar = fit_proposed_ar(
+    print("[3/5] fitting paper-proposed models")
+    paper_proposed_ar = fit_paper_proposed_ar(
         history_actual, train_actual, train_da, train_rt, w1=W1, w2=W2
     )
-    proposed_mlr = fit_proposed_mlr(
+    paper_proposed_mlr = fit_paper_proposed_mlr(
         X_train,
         dataset.train["solar_power"].to_numpy(),
         dataset.train["da_price"].to_numpy(),
@@ -106,22 +106,24 @@ def run_experiment(predictors_path, da_path, rt_path, output_dir):
     )
 
     fits = {
-        "Conventional AR": conventional_ar,
-        "Conventional MLR": conventional_mlr,
-        "Proposed AR": proposed_ar,
-        "Proposed MLR": proposed_mlr,
+        "Baseline AR": baseline_ar,
+        "Baseline MLR": baseline_mlr,
+        "Paper-proposed AR": paper_proposed_ar,
+        "Paper-proposed MLR": paper_proposed_mlr,
     }
     raw_predictions = {
-        "Conventional AR": predict_ar_rolling(
-            conventional_ar.coefficients_by_hour, train_actual[-1], test_actual
+        "Baseline AR": predict_ar_rolling(
+            baseline_ar.coefficients_by_hour, train_actual[-1], test_actual
         ).reshape(-1),
-        "Conventional MLR": predict_linear_raw(
-            X_test, conventional_mlr.coefficients
+        "Baseline MLR": predict_linear_raw(
+            X_test, baseline_mlr.coefficients
         ),
-        "Proposed AR": predict_ar_rolling(
-            proposed_ar.coefficients_by_hour, train_actual[-1], test_actual
+        "Paper-proposed AR": predict_ar_rolling(
+            paper_proposed_ar.coefficients_by_hour, train_actual[-1], test_actual
         ).reshape(-1),
-        "Proposed MLR": predict_linear_raw(X_test, proposed_mlr.coefficients),
+        "Paper-proposed MLR": predict_linear_raw(
+            X_test, paper_proposed_mlr.coefficients
+        ),
     }
 
     print("[4/5] evaluating predictions")
